@@ -1,12 +1,13 @@
 /* ============================================================================
-   MenuPlus — Centralized Apple Liquid Glass Theme Rules
-   ملف موحّد للتحكم الكامل بشكل الأقسام، البطاقات، الأزرار، الحقول، والنوافذ.
+   MenuPlus — Universal Liquid Glass Theme (All Pages & Dashboards)
+   ملف تنسيق موحّد لجميع لوحات التحكم والصفحات بالوضعين الداكن والفاتح.
    ============================================================================ */
 
 /* --------------------------------------------------------------------------
-   1. Clean Apple Liquid Glass Panels & Cards (Preserve Global .shell Background)
+   1. Crystal Liquid Glass Cards, Panels & Sections (Dashboards + Platform Pages)
    -------------------------------------------------------------------------- */
 .shell .card,
+.shell .kp,
 .shell .mp-item-card,
 .shell .mp-set-card,
 .shell .mp-set2-panel,
@@ -22,9 +23,15 @@
 .shell .mp-db-maintenance-bar,
 .shell .mp-pwa-banner,
 .shell .mp-compass-search-bar,
+.shell .mp-tab-order-tile:not(.is-dragging),
 .shell .mp-appearance-layout-card:not(.selected),
 .shell .mp-appearance-theme-card:not(.selected),
-.shell .mp-appearance-shape-card:not(.selected) {
+.shell .mp-appearance-shape-card:not(.selected),
+.home-root .card,
+.home-root .feature-compact-card,
+.home-root .mp-auth-glass-card,
+.home-root .mp-unified-card,
+.home-root .mp-pricing-card-anim:not(.is-featured) {
   background: var(--mp-glass-bg) !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
@@ -32,23 +39,27 @@
   box-shadow: var(--mp-glass-shadow) !important;
   color: var(--ink);
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.18s ease;
+    background 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .shell .mp-set2-panel,
 .shell .mp-stats-panel,
 .shell .mp-set2-hero,
-.shell .mp-home-tips-box {
-  border-radius: var(--mp-radius-panel);
+.shell .mp-home-tips-box,
+.home-root .mp-auth-glass-card,
+.home-root .mp-unified-card {
+  border-radius: var(--mp-radius-panel) !important;
 }
 
 .shell .mp-item-card:hover,
 .shell .mp-order-row:hover,
 .shell .mp-home-shortcut-card:not(.is-active-warn):hover,
-.shell .mp-addon-square-card:not(.is-enabled):hover {
+.shell .mp-addon-square-card:not(.is-enabled):hover,
+.shell .kp:hover,
+.home-root .feature-compact-card:hover {
   background: var(--mp-glass-bg-hover) !important;
   border-color: var(--mp-glass-border-strong) !important;
   box-shadow: var(--mp-glass-shadow-hover) !important;
@@ -59,20 +70,31 @@
   padding: 13px 16px;
 }
 
-.shell .mp-addon-square-card.is-enabled {
-  background: color-mix(in srgb, var(--brand) 14%, transparent) !important;
+.shell .mp-addon-square-card.is-enabled,
+.shell .mp-appearance-layout-card.selected,
+.shell .mp-appearance-theme-card.selected,
+.shell .mp-appearance-shape-card.selected {
+  background: color-mix(in srgb, var(--brand) 16%, transparent) !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
-  border: 1px solid color-mix(in srgb, var(--brand) 55%, var(--mp-glass-border)) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 65%, var(--mp-glass-border)) !important;
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
-    0 10px 28px color-mix(in srgb, var(--brand) 16%, transparent) !important;
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 1.5px 0 rgba(255, 255, 255, 0.14),
+    0 12px 28px color-mix(in srgb, var(--brand) 22%, transparent) !important;
+}
+
+/* Admin framed sections stay flat inside glass or clean unified glass */
+.shell .mp-framed-box {
+  border-bottom-color: var(--mp-glass-divider) !important;
 }
 
 /* --------------------------------------------------------------------------
-   2. Featherlight Inner Controls, Inputs, Pills & Icon Buttons
+   2. Crystal Pill Controls, Inputs, Icon Keys & Glossy Switches
    -------------------------------------------------------------------------- */
 .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn),
+.home-root .btn:not(.p):not(.d),
+.shell .mp-jump-btn,
 .shell .mp-item-icon-btn:not(.is-scheduled),
 .shell .mp-order-icon-btn:not(.is-wa),
 .shell .mp-order-link-pill,
@@ -83,6 +105,7 @@
 .shell .mp-compass-btn:not(.is-active),
 .shell .mp-seg-group,
 .shell .mp-tbl-btn:not(.is-danger),
+.shell .mp-tab-order-btn,
 .shell .mp-action-tile,
 .shell .mp-custom-color-chip,
 .shell .mp-item-price-btn,
@@ -94,7 +117,7 @@
   -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
   border: 1px solid var(--mp-glass-border) !important;
   box-shadow: var(--mp-glass-control-shadow) !important;
-  color: var(--ink);
+  color: var(--ink) !important;
   transition:
     background 0.18s ease,
     border-color 0.18s ease,
@@ -103,12 +126,15 @@
 }
 
 .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn):hover:not(:disabled),
+.home-root .btn:not(.p):not(.d):hover:not(:disabled),
+.shell .mp-jump-btn:hover,
 .shell .mp-item-icon-btn:not(.is-scheduled):hover,
 .shell .mp-order-icon-btn:not(.is-wa):hover,
 .shell .mp-order-link-pill:hover,
 .shell .mp-items-cats-arrow:hover,
 .shell .mp-compass-btn:not(.is-active):hover,
 .shell .mp-tbl-btn:not(.is-danger):hover:not(:disabled),
+.shell .mp-tab-order-btn:hover,
 .shell .mp-action-tile:hover,
 .shell .mp-item-price-btn:hover,
 .shell .mp-set2-channel-card:not(.is-selected):hover,
@@ -118,28 +144,81 @@
   border-color: var(--mp-glass-border-strong) !important;
 }
 
-.shell .mp-set2-channel-card.is-selected {
-  background: color-mix(in srgb, var(--brand) 14%, transparent) !important;
-  border: 1px solid color-mix(in srgb, var(--brand) 60%, transparent) !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18) !important;
+.shell .btn:not(.mp-home-tip-btn),
+.home-root .btn,
+.shell .mp-jump-btn,
+.shell .mp-order-link-pill,
+.shell .mp-items-cat-tab,
+.shell .mp-items-count-box {
+  border-radius: var(--mp-radius-pill) !important;
+}
+
+.shell .mp-set2-channel-card.is-selected,
+.shell .mp-set2-type-card.is-selected {
+  background: color-mix(in srgb, var(--brand) 18%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 65%, var(--mp-glass-border)) !important;
+  box-shadow:
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.36),
+    0 8px 20px color-mix(in srgb, var(--brand) 18%, transparent) !important;
 }
 
 .shell .mp-item-icon-btn {
   width: 36px;
   height: 36px;
-  border-radius: 11px;
+  border-radius: 12px;
 }
 
+/* Liquid Glass Primary CTA Buttons & Gel Pills */
+.shell .btn.p:not(.d),
+.home-root .btn.p:not(.d),
+.shell .mp-set2-tab-pill,
+.shell .mp-set2-seg-2-btn.active,
+.shell .mp-seg-btn.is-active,
+.shell .mp-items-cat-tab.is-active {
+  background:
+    radial-gradient(ellipse 75% 45% at 24% 0%, rgba(255, 255, 255, 0.42) 0%, transparent 70%),
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 92%, #ffffff 8%) 0%, var(--brand) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36) !important;
+  box-shadow:
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.56),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.22),
+    0 8px 22px color-mix(in srgb, var(--brand) 34%, transparent) !important;
+  color: var(--on-brand, #ffffff) !important;
+}
+
+/* Liquid Glass iOS Toggle Switches */
+.shell .ios-switch.on {
+  background:
+    radial-gradient(ellipse 75% 50% at 25% 10%, rgba(255, 255, 255, 0.36) 0%, transparent 72%),
+    linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.18),
+    0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+.shell .ios-switch.off {
+  background: var(--mp-glass-control) !important;
+  border: 1px solid var(--mp-glass-border);
+  box-shadow: var(--mp-glass-control-shadow);
+}
+
+/* Inputs & Textareas */
 .shell .inp,
 .shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input),
 .shell select,
 .shell textarea,
-.shell .mp-sb-branch-select {
+.shell .mp-sb-branch-select,
+.home-root .inp,
+.home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
+.home-root select,
+.home-root textarea {
   background: var(--mp-glass-control) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
   border: 1px solid var(--mp-glass-border) !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+  box-shadow: var(--mp-glass-control-shadow) !important;
   border-radius: var(--mp-radius-control) !important;
   color: var(--ink) !important;
   font-size: var(--mp-text-row);
@@ -148,15 +227,21 @@
 .shell .inp:focus,
 .shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input):focus,
 .shell select:focus,
-.shell textarea:focus {
-  border-color: color-mix(in srgb, var(--brand) 70%, transparent) !important;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent) !important;
+.shell textarea:focus,
+.home-root .inp:focus,
+.home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
+.home-root select:focus,
+.home-root textarea:focus {
+  border-color: color-mix(in srgb, var(--brand) 75%, #ffffff 25%) !important;
+  box-shadow:
+    var(--mp-glass-control-shadow),
+    0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent) !important;
 }
 
 .shell .mp-item-thumb,
 .shell .mp-item-thumb-placeholder {
   border: 1px solid var(--mp-glass-border) !important;
-  box-shadow: none;
+  box-shadow: var(--mp-glass-control-shadow);
 }
 
 @media (max-width: 767px) {
@@ -166,20 +251,17 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Topbar, Sidebar & Elevated Liquid Glass Modals
+   3. Topbar, Nav, Sidebar, Drawers & Elevated Liquid Glass Modals
    -------------------------------------------------------------------------- */
-.shell .btn.p:not(.d) {
-  box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
-    0 6px 18px color-mix(in srgb, var(--brand) 24%, transparent) !important;
-}
-
-.shell .app-topbar {
+.shell .app-topbar,
+.home-root .nav {
   background: var(--mp-glass-bg) !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
   border-bottom: 1px solid var(--mp-glass-border) !important;
-  box-shadow: inset 0 -1px 0 0 var(--mp-glass-divider) !important;
+  box-shadow:
+    inset 0 -1px 0 0 var(--mp-glass-divider),
+    0 8px 26px rgba(0, 0, 0, 0.12) !important;
 }
 
 .shell .sb,
@@ -188,26 +270,26 @@
   backdrop-filter: var(--mp-glass-modal-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-modal-blur) !important;
   border-inline-end: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-shadow) !important;
   color: var(--ink) !important;
 }
 
 .ajax-box,
 .mp-od-sheet,
 .mp-select-modal-box,
-.mp-status-picker-card {
+.mp-status-picker-card,
+.profile-popover {
   background: var(--mp-glass-bg-elevated) !important;
   backdrop-filter: var(--mp-glass-modal-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-modal-blur) !important;
   border: 1px solid var(--mp-glass-border) !important;
-  border-radius: var(--mp-radius-modal);
-  box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
-    0 24px 64px rgba(0, 0, 0, 0.42) !important;
+  border-radius: var(--mp-radius-modal) !important;
+  box-shadow: var(--mp-glass-shadow) !important;
   color: var(--ink) !important;
 }
 
 /* --------------------------------------------------------------------------
-   4. Clear, Readable & Concise Dashboard Typography
+   4. Clear, Readable & Concise Typography Across All Dashboards
    -------------------------------------------------------------------------- */
 .shell .mp-item-title {
   font-size: var(--mp-text-row);
@@ -218,7 +300,6 @@
 .shell .mp-item-price-btn {
   font-size: var(--mp-text-meta);
   font-weight: 800;
-  border-style: solid !important;
 }
 
 .shell .mp-set2-panel-title,
