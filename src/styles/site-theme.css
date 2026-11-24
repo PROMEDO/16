@@ -1,10 +1,10 @@
 /* ============================================================================
-   MenuPlus — Centralized Site & Dashboard Visual Theme
+   MenuPlus — Centralized Apple Liquid Glass Theme Rules
    ملف موحّد للتحكم الكامل بشكل الأقسام، البطاقات، الأزرار، الحقول، والنوافذ.
    ============================================================================ */
 
 /* --------------------------------------------------------------------------
-   1. Luminous Shiny Glass Cards & Sections (Preserve Global .shell Background)
+   1. Clean Apple Liquid Glass Panels & Cards (Preserve Global .shell Background)
    -------------------------------------------------------------------------- */
 .shell .card,
 .shell .mp-item-card,
@@ -38,6 +38,13 @@
     transform 0.18s ease;
 }
 
+.shell .mp-set2-panel,
+.shell .mp-stats-panel,
+.shell .mp-set2-hero,
+.shell .mp-home-tips-box {
+  border-radius: var(--mp-radius-panel);
+}
+
 .shell .mp-item-card:hover,
 .shell .mp-order-row:hover,
 .shell .mp-home-shortcut-card:not(.is-active-warn):hover,
@@ -53,19 +60,17 @@
 }
 
 .shell .mp-addon-square-card.is-enabled {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.02) 40%),
-    color-mix(in srgb, var(--brand) 16%, transparent) !important;
+  background: color-mix(in srgb, var(--brand) 14%, transparent) !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
-  border: 1.5px solid color-mix(in srgb, var(--brand) 65%, var(--mp-glass-border)) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 55%, var(--mp-glass-border)) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.42),
-    0 10px 28px color-mix(in srgb, var(--brand) 18%, transparent) !important;
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+    0 10px 28px color-mix(in srgb, var(--brand) 16%, transparent) !important;
 }
 
 /* --------------------------------------------------------------------------
-   2. Glossy Glass Controls, Icon Buttons, Inputs & Selectors
+   2. Featherlight Inner Controls, Inputs, Pills & Icon Buttons
    -------------------------------------------------------------------------- */
 .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn),
 .shell .mp-item-icon-btn:not(.is-scheduled),
@@ -80,7 +85,10 @@
 .shell .mp-tbl-btn:not(.is-danger),
 .shell .mp-action-tile,
 .shell .mp-custom-color-chip,
-.shell .mp-item-price-btn {
+.shell .mp-item-price-btn,
+.shell .mp-set2-channel-card:not(.is-selected),
+.shell .mp-set2-type-card:not(.is-selected),
+.shell .mp-set2-seg-2-btn:not(.active) {
   background: var(--mp-glass-control) !important;
   backdrop-filter: var(--mp-glass-control-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
@@ -102,9 +110,18 @@
 .shell .mp-compass-btn:not(.is-active):hover,
 .shell .mp-tbl-btn:not(.is-danger):hover:not(:disabled),
 .shell .mp-action-tile:hover,
-.shell .mp-item-price-btn:hover {
+.shell .mp-item-price-btn:hover,
+.shell .mp-set2-channel-card:not(.is-selected):hover,
+.shell .mp-set2-type-card:not(.is-selected):hover,
+.shell .mp-set2-seg-2-btn:not(.active):hover {
   background: var(--mp-glass-control-hover) !important;
   border-color: var(--mp-glass-border-strong) !important;
+}
+
+.shell .mp-set2-channel-card.is-selected {
+  background: color-mix(in srgb, var(--brand) 14%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 60%, transparent) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18) !important;
 }
 
 .shell .mp-item-icon-btn {
@@ -119,10 +136,11 @@
 .shell textarea,
 .shell .mp-sb-branch-select {
   background: var(--mp-glass-control) !important;
-  backdrop-filter: var(--mp-glass-control-blur) !important;
-  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   border: 1px solid var(--mp-glass-border) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+  border-radius: var(--mp-radius-control) !important;
   color: var(--ink) !important;
   font-size: var(--mp-text-row);
 }
@@ -131,17 +149,14 @@
 .shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input):focus,
 .shell select:focus,
 .shell textarea:focus {
-  border-color: var(--brand) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.30),
-    0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent) !important;
+  border-color: color-mix(in srgb, var(--brand) 70%, transparent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent) !important;
 }
 
-/* Unbox nested thumbnails / containers inside cards */
 .shell .mp-item-thumb,
 .shell .mp-item-thumb-placeholder {
   border: 1px solid var(--mp-glass-border) !important;
-  box-shadow: var(--mp-glass-control-shadow);
+  box-shadow: none;
 }
 
 @media (max-width: 767px) {
@@ -151,12 +166,12 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Topbar, Sidebar & Elevated Glass Modals
+   3. Topbar, Sidebar & Elevated Liquid Glass Modals
    -------------------------------------------------------------------------- */
 .shell .btn.p:not(.d) {
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 6px 18px color-mix(in srgb, var(--brand) 28%, transparent) !important;
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+    0 6px 18px color-mix(in srgb, var(--brand) 24%, transparent) !important;
 }
 
 .shell .app-topbar {
@@ -164,7 +179,7 @@
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
   border-bottom: 1px solid var(--mp-glass-border) !important;
-  box-shadow: inset 0 -1px 0 var(--mp-glass-divider) !important;
+  box-shadow: inset 0 -1px 0 0 var(--mp-glass-divider) !important;
 }
 
 .shell .sb,
@@ -186,8 +201,8 @@
   border: 1px solid var(--mp-glass-border) !important;
   border-radius: var(--mp-radius-modal);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.36),
-    0 24px 64px rgba(0, 0, 0, 0.38) !important;
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+    0 24px 64px rgba(0, 0, 0, 0.42) !important;
   color: var(--ink) !important;
 }
 
