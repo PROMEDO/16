@@ -1,6 +1,6 @@
 /* ============================================================================
-   MenuPlus — Centralized Apple Liquid Glass Theme Tokens
-   ملف موحّد للألوان، الشفافية الزجاجية، اللمعة الكريستالية، والخطوط للوضعين الداكن والفاتح.
+   MenuPlus — Centralized Smoked Liquid Glass Theme Tokens (Dark & Light)
+   عدّل الألوان، الانعكاسات الزجاجية، الشفافية، والخطوط من هذا الملف فقط.
    ============================================================================ */
 
 :root,
@@ -29,7 +29,7 @@ html[data-theme="light"],
   --panel: #F8FAFC;
   --ink: #0F172A;
   --muted: #475569;
-  --line: rgba(15, 23, 42, 0.12);
+  --line: rgba(15, 23, 42, 0.10);
   --sel: rgba(15, 23, 42, 0.05);
 
   /* Typography & Radii Scale */
@@ -44,49 +44,37 @@ html[data-theme="light"],
   --mp-text-control: 14.5px;
   --mp-text-meta: 13.5px;
 
-  /* Apple Liquid Glass Tokens (Light Mode — Airy Crystal Glass + White Bevel Rim) */
-  --mp-glass-blur: blur(7px) saturate(1.8);
-  --mp-glass-control-blur: blur(6px) saturate(1.65);
-  --mp-glass-modal-blur: blur(18px) saturate(1.85);
+  /* Liquid Glass Tokens (Light Mode — Clean Translucent Crystal + Soft Directional Sheen) */
+  --mp-glass-blur: blur(10px) saturate(1.7);
+  --mp-glass-control-blur: blur(8px) saturate(1.5);
+  --mp-glass-modal-blur: blur(22px) saturate(1.75);
   --mp-glass-bg:
-    radial-gradient(ellipse 68% 42% at 14% 0%, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0) 68%),
-    radial-gradient(ellipse 56% 40% at 88% 100%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 64%),
-    rgba(255, 255, 255, 0.34);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.34) 48%, rgba(255, 255, 255, 0.50) 100%);
   --mp-glass-bg-hover:
-    radial-gradient(ellipse 72% 45% at 14% 0%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0) 70%),
-    radial-gradient(ellipse 60% 42% at 88% 100%, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0) 66%),
-    rgba(255, 255, 255, 0.48);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.46) 48%, rgba(255, 255, 255, 0.64) 100%);
   --mp-glass-bg-elevated:
-    radial-gradient(ellipse 68% 40% at 14% 0%, rgba(255, 255, 255, 0.94) 0%, transparent 68%),
-    rgba(255, 255, 255, 0.72);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.72) 100%);
   --mp-glass-control:
-    radial-gradient(ellipse 75% 48% at 20% 0%, rgba(255, 255, 255, 0.88) 0%, transparent 72%),
-    rgba(255, 255, 255, 0.42);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.42) 100%);
   --mp-glass-control-hover:
-    radial-gradient(ellipse 75% 52% at 20% 0%, rgba(255, 255, 255, 0.98) 0%, transparent 72%),
-    rgba(255, 255, 255, 0.64);
-  --mp-glass-border: rgba(255, 255, 255, 0.88);
-  --mp-glass-border-strong: rgba(255, 255, 255, 1);
-  --mp-glass-divider: rgba(15, 23, 42, 0.08);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.58) 100%);
+  --mp-glass-border: rgba(15, 23, 42, 0.08);
+  --mp-glass-border-strong: rgba(15, 23, 42, 0.15);
+  --mp-glass-divider: rgba(15, 23, 42, 0.07);
   --mp-glass-shadow:
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.98),
-    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.74),
-    inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.74),
-    inset -1.5px 0 2px 0 rgba(255, 255, 255, 0.60),
-    0 0 0 1px rgba(15, 23, 42, 0.07),
-    0 12px 30px rgba(15, 23, 42, 0.09);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.92),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 0 rgba(15, 23, 42, 0.05),
+    0 10px 28px rgba(15, 23, 42, 0.07);
   --mp-glass-shadow-hover:
-    inset 0 2px 2px 0 rgba(255, 255, 255, 1),
-    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.86),
-    inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.86),
-    inset -1.5px 0 2px 0 rgba(255, 255, 255, 0.72),
-    0 0 0 1px rgba(15, 23, 42, 0.10),
-    0 16px 36px rgba(15, 23, 42, 0.13);
+    inset 0 1px 0 0 rgba(255, 255, 255, 1),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.70),
+    inset 0 -1px 0 0 rgba(15, 23, 42, 0.07),
+    0 14px 34px rgba(15, 23, 42, 0.10);
   --mp-glass-control-shadow:
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.96),
-    inset 0 -1px 1.5px 0 rgba(255, 255, 255, 0.68),
-    0 0 0 1px rgba(15, 23, 42, 0.07),
-    0 4px 12px rgba(15, 23, 42, 0.06);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.88),
+    inset 0 -1px 0 0 rgba(15, 23, 42, 0.04),
+    0 3px 10px rgba(15, 23, 42, 0.05);
 
   --set-glass-panel: var(--mp-glass-bg);
   --set-glass-control: var(--mp-glass-control);
@@ -100,54 +88,71 @@ html[data-theme="dark"],
 [data-home-theme="dark"] {
   --brand-ink: #34D399;
   --ink: #F8FAFC;
-  --muted: #A1B0C4;
-  --line: rgba(255, 255, 255, 0.18);
+  --muted: #9AA8BC;
+  --line: rgba(255, 255, 255, 0.09);
   --surface: #161B22;
   --panel: #1C222B;
   --bg: #0F1419;
-  --sel: rgba(255, 255, 255, 0.08);
-  --soft: rgba(15, 118, 110, 0.20);
+  --sel: rgba(255, 255, 255, 0.06);
+  --soft: rgba(15, 118, 110, 0.18);
 
-  /* Apple Liquid Glass Tokens (Dark Mode — Crystal See-Through + Luminous Glass Thickness Bevel) */
-  --mp-glass-blur: blur(5px) saturate(1.75);
-  --mp-glass-control-blur: blur(5px) saturate(1.60);
-  --mp-glass-modal-blur: blur(18px) saturate(1.85);
+  /* Smoked Obsidian Liquid Glass (Dark Mode — Silky Dark Refraction + Delicate Directional Edge Reflections) */
+  --mp-glass-blur: blur(10px) saturate(1.45);
+  --mp-glass-control-blur: blur(8px) saturate(1.35);
+  --mp-glass-modal-blur: blur(22px) saturate(1.55);
   --mp-glass-bg:
-    radial-gradient(ellipse 64% 38% at 14% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 65%),
-    radial-gradient(ellipse 52% 36% at 88% 100%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 62%),
-    rgba(255, 255, 255, 0.024);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.068) 0%,
+      rgba(255, 255, 255, 0.018) 38%,
+      rgba(8, 12, 18, 0.42) 100%
+    );
   --mp-glass-bg-hover:
-    radial-gradient(ellipse 68% 42% at 14% 0%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 65%),
-    radial-gradient(ellipse 56% 38% at 88% 100%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 62%),
-    rgba(255, 255, 255, 0.048);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.105) 0%,
+      rgba(255, 255, 255, 0.032) 42%,
+      rgba(10, 15, 22, 0.36) 100%
+    );
   --mp-glass-bg-elevated:
-    radial-gradient(ellipse 66% 40% at 14% 0%, rgba(255, 255, 255, 0.14) 0%, transparent 66%),
-    rgba(18, 24, 34, 0.62);
+    linear-gradient(
+      145deg,
+      rgba(30, 38, 50, 0.72) 0%,
+      rgba(13, 17, 24, 0.76) 100%
+    );
   --mp-glass-control:
-    radial-gradient(ellipse 75% 45% at 18% 0%, rgba(255, 255, 255, 0.14) 0%, transparent 70%),
-    rgba(255, 255, 255, 0.036);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075) 0%,
+      rgba(255, 255, 255, 0.018) 45%,
+      rgba(8, 12, 18, 0.34) 100%
+    );
   --mp-glass-control-hover:
-    radial-gradient(ellipse 75% 45% at 18% 0%, rgba(255, 255, 255, 0.22) 0%, transparent 70%),
-    rgba(255, 255, 255, 0.074);
-  --mp-glass-border: rgba(255, 255, 255, 0.28);
-  --mp-glass-border-strong: rgba(255, 255, 255, 0.44);
-  --mp-glass-divider: rgba(255, 255, 255, 0.12);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.038) 48%,
+      rgba(12, 18, 26, 0.28) 100%
+    );
+  --mp-glass-border: rgba(255, 255, 255, 0.095);
+  --mp-glass-border-strong: rgba(255, 255, 255, 0.18);
+  --mp-glass-divider: rgba(255, 255, 255, 0.075);
   --mp-glass-shadow:
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.44),
-    inset 0 -1.5px 1.5px 0 rgba(255, 255, 255, 0.16),
-    inset 1.5px 0 1.5px 0 rgba(255, 255, 255, 0.20),
-    inset -1.5px 0 1.5px 0 rgba(255, 255, 255, 0.14),
-    0 14px 36px rgba(0, 0, 0, 0.36);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.17),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.34),
+    inset -1px 0 0 0 rgba(0, 0, 0, 0.18),
+    0 14px 36px rgba(0, 0, 0, 0.42);
   --mp-glass-shadow-hover:
-    inset 0 2px 1.5px 0 rgba(255, 255, 255, 0.58),
-    inset 0 -1.5px 2px 0 rgba(255, 255, 255, 0.24),
-    inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.28),
-    inset -1.5px 0 2px 0 rgba(255, 255, 255, 0.20),
-    0 18px 42px rgba(0, 0, 0, 0.44);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.24),
+    inset 1px 0 0 0 rgba(255, 255, 255, 0.09),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.38),
+    inset -1px 0 0 0 rgba(0, 0, 0, 0.22),
+    0 18px 42px rgba(0, 0, 0, 0.50);
   --mp-glass-control-shadow:
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.34),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.10),
-    0 4px 14px rgba(0, 0, 0, 0.22);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.30),
+    0 4px 14px rgba(0, 0, 0, 0.24);
 
   --set-glass-panel: var(--mp-glass-bg);
   --set-glass-control: var(--mp-glass-control);

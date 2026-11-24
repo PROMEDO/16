@@ -1,10 +1,10 @@
 /* ============================================================================
-   MenuPlus — Universal Liquid Glass Theme (All Pages & Dashboards)
+   MenuPlus — Universal Smoked Liquid Glass Theme (All Pages & Dashboards)
    ملف تنسيق موحّد لجميع لوحات التحكم والصفحات بالوضعين الداكن والفاتح.
    ============================================================================ */
 
 /* --------------------------------------------------------------------------
-   1. Crystal Liquid Glass Cards, Panels & Sections (Dashboards + Platform Pages)
+   1. Smoked Liquid Glass Cards, Panels & Sections (Dashboards + Platform Pages)
    -------------------------------------------------------------------------- */
 .shell .card,
 .shell .kp,
@@ -33,16 +33,19 @@
 .home-root .mp-unified-card,
 .home-root .mp-pricing-card-anim:not(.is-featured) {
   background: var(--mp-glass-bg) !important;
+  background-size: 160% 160% !important;
+  background-position: 0% 0% !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
   border: 1px solid var(--mp-glass-border) !important;
   box-shadow: var(--mp-glass-shadow) !important;
   color: var(--ink);
   transition:
-    background 0.22s ease,
-    border-color 0.22s ease,
-    box-shadow 0.22s ease,
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    background-position 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.28s ease,
+    border-color 0.24s ease,
+    box-shadow 0.28s ease,
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .shell .mp-set2-panel,
@@ -61,8 +64,18 @@
 .shell .kp:hover,
 .home-root .feature-compact-card:hover {
   background: var(--mp-glass-bg-hover) !important;
+  background-position: 100% 100% !important;
   border-color: var(--mp-glass-border-strong) !important;
   box-shadow: var(--mp-glass-shadow-hover) !important;
+  transform: translateY(-1px);
+}
+
+.shell .mp-home-shortcut-card:active,
+.shell .mp-addon-square-card:active,
+.shell .btn:active,
+.shell .mp-item-icon-btn:active,
+.shell .mp-order-icon-btn:active {
+  transform: scale(0.975);
 }
 
 .shell .mp-item-card {
@@ -74,23 +87,24 @@
 .shell .mp-appearance-layout-card.selected,
 .shell .mp-appearance-theme-card.selected,
 .shell .mp-appearance-shape-card.selected {
-  background: color-mix(in srgb, var(--brand) 16%, transparent) !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 24%, transparent) 0%, color-mix(in srgb, var(--brand) 10%, transparent) 100%) !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
-  border: 1px solid color-mix(in srgb, var(--brand) 65%, var(--mp-glass-border)) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 52%, var(--mp-glass-border)) !important;
   box-shadow:
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.42),
-    inset 0 -1px 1.5px 0 rgba(255, 255, 255, 0.14),
-    0 12px 28px color-mix(in srgb, var(--brand) 22%, transparent) !important;
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.22),
+    0 12px 28px color-mix(in srgb, var(--brand) 20%, transparent) !important;
 }
 
-/* Admin framed sections stay flat inside glass or clean unified glass */
+/* Admin framed sections stay clean inside glass */
 .shell .mp-framed-box {
   border-bottom-color: var(--mp-glass-divider) !important;
 }
 
 /* --------------------------------------------------------------------------
-   2. Crystal Pill Controls, Inputs, Icon Keys & Glossy Switches
+   2. Silky Pill Controls, Inputs, Icon Keys & Glossy Switches
    -------------------------------------------------------------------------- */
 .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn),
 .home-root .btn:not(.p):not(.d),
@@ -155,11 +169,13 @@
 
 .shell .mp-set2-channel-card.is-selected,
 .shell .mp-set2-type-card.is-selected {
-  background: color-mix(in srgb, var(--brand) 18%, transparent) !important;
-  border: 1px solid color-mix(in srgb, var(--brand) 65%, var(--mp-glass-border)) !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 26%, transparent) 0%, color-mix(in srgb, var(--brand) 10%, transparent) 100%) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 55%, rgba(255, 255, 255, 0.14)) !important;
   box-shadow:
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.36),
-    0 8px 20px color-mix(in srgb, var(--brand) 18%, transparent) !important;
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.22),
+    0 8px 22px color-mix(in srgb, var(--brand) 20%, transparent) !important;
 }
 
 .shell .mp-item-icon-btn {
@@ -168,7 +184,7 @@
   border-radius: 12px;
 }
 
-/* Liquid Glass Primary CTA Buttons & Gel Pills */
+/* Liquid Glass Primary CTA Buttons & Active Pills */
 .shell .btn.p:not(.d),
 .home-root .btn.p:not(.d),
 .shell .mp-set2-tab-pill,
@@ -176,26 +192,24 @@
 .shell .mp-seg-btn.is-active,
 .shell .mp-items-cat-tab.is-active {
   background:
-    radial-gradient(ellipse 75% 45% at 24% 0%, rgba(255, 255, 255, 0.42) 0%, transparent 70%),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 92%, #ffffff 8%) 0%, var(--brand) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.36) !important;
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 95%, #ffffff 12%) 0%, color-mix(in srgb, var(--brand) 82%, #000000 18%) 100%) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 55%, rgba(255, 255, 255, 0.24)) !important;
   box-shadow:
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.56),
-    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.22),
-    0 8px 22px color-mix(in srgb, var(--brand) 34%, transparent) !important;
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.26),
+    0 8px 22px color-mix(in srgb, var(--brand) 30%, transparent) !important;
   color: var(--on-brand, #ffffff) !important;
 }
 
 /* Liquid Glass iOS Toggle Switches */
 .shell .ios-switch.on {
   background:
-    radial-gradient(ellipse 75% 50% at 25% 10%, rgba(255, 255, 255, 0.36) 0%, transparent 72%),
-    linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+    linear-gradient(135deg, #34d399 0%, #059669 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.24);
   box-shadow:
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.18),
-    0 4px 14px rgba(16, 185, 129, 0.35);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.36),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.20),
+    0 4px 14px rgba(16, 185, 129, 0.28);
 }
 
 .shell .ios-switch.off {
@@ -232,10 +246,10 @@
 .home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
 .home-root select:focus,
 .home-root textarea:focus {
-  border-color: color-mix(in srgb, var(--brand) 75%, #ffffff 25%) !important;
+  border-color: color-mix(in srgb, var(--brand) 65%, rgba(255, 255, 255, 0.22)) !important;
   box-shadow:
     var(--mp-glass-control-shadow),
-    0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent) !important;
+    0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent) !important;
 }
 
 .shell .mp-item-thumb,
@@ -261,7 +275,7 @@
   border-bottom: 1px solid var(--mp-glass-border) !important;
   box-shadow:
     inset 0 -1px 0 0 var(--mp-glass-divider),
-    0 8px 26px rgba(0, 0, 0, 0.12) !important;
+    0 8px 26px rgba(0, 0, 0, 0.16) !important;
 }
 
 .shell .sb,
