@@ -44,13 +44,18 @@ html[data-theme="light"],
   --mp-text-control: 14.5px;
   --mp-text-meta: 13.5px;
 
-  /* Apple Liquid Glass Tokens (Light Mode — Matches Reference Flower & + Button Light Half) */
-  --mp-glass-blur: blur(9px) saturate(1.85) brightness(1.04);
-  --mp-glass-control-blur: blur(8px) saturate(1.75) brightness(1.03);
-  --mp-glass-modal-blur: blur(20px) saturate(1.85);
-  --mp-glass-bg: rgba(255, 255, 255, 0.16);
-  --mp-glass-bg-hover: rgba(255, 255, 255, 0.26);
-  --mp-glass-bg-elevated: rgba(255, 255, 255, 0.56);
+  /* Fixed Grid Backdrop Tokens (Light Mode) */
+  --mp-grid-size: 64px;
+  --mp-grid-line: rgba(15, 23, 42, 0.095);
+
+  /* Apple Liquid Glass Tokens (Light Mode — Crisp Optical Clarity) */
+  --mp-glass-blur: blur(5.5px) saturate(1.8) brightness(1.03);
+  --mp-glass-sticky-blur: blur(10px) saturate(1.75) brightness(1.02);
+  --mp-glass-control-blur: none;
+  --mp-glass-modal-blur: blur(16px) saturate(1.75);
+  --mp-glass-bg: rgba(255, 255, 255, 0.14);
+  --mp-glass-bg-hover: rgba(255, 255, 255, 0.24);
+  --mp-glass-bg-elevated: rgba(255, 255, 255, 0.62);
   --mp-glass-control: rgba(255, 255, 255, 0.22);
   --mp-glass-control-hover: rgba(255, 255, 255, 0.36);
 
@@ -111,15 +116,19 @@ html[data-theme="dark"],
   --sel: rgba(255, 255, 255, 0.04);
   --soft: rgba(15, 118, 110, 0.16);
 
-  /* Apple Liquid Glass Tokens (Dark Mode — Matches Reference + Button Dark Half) */
-  --mp-glass-blur: blur(5px) saturate(1.7);
-  --mp-glass-control-blur: blur(4px) saturate(1.6);
-  --mp-glass-modal-blur: blur(18px) saturate(1.75);
+  /* Fixed Grid Backdrop Tokens (Dark Mode) */
+  --mp-grid-line: rgba(255, 255, 255, 0.088);
+
+  /* Apple Liquid Glass Tokens (Dark Mode — Crisp Optical Clarity) */
+  --mp-glass-blur: blur(4.5px) saturate(1.7);
+  --mp-glass-sticky-blur: blur(9px) saturate(1.65);
+  --mp-glass-control-blur: none;
+  --mp-glass-modal-blur: blur(16px) saturate(1.7);
   --mp-glass-bg: rgba(12, 16, 24, 0.14);
-  --mp-glass-bg-hover: rgba(18, 24, 34, 0.20);
-  --mp-glass-bg-elevated: rgba(14, 19, 27, 0.56);
-  --mp-glass-control: rgba(12, 16, 24, 0.18);
-  --mp-glass-control-hover: rgba(255, 255, 255, 0.06);
+  --mp-glass-bg-hover: rgba(18, 24, 34, 0.21);
+  --mp-glass-bg-elevated: rgba(14, 19, 27, 0.62);
+  --mp-glass-control: rgba(12, 16, 24, 0.20);
+  --mp-glass-control-hover: rgba(255, 255, 255, 0.07);
 
   /* 135deg Specular Rim Gradient (Crisp Diagonal Crystal Glints, Fades at Shadow Sides) */
   --mp-glass-rim: linear-gradient(
@@ -160,4 +169,58 @@ html[data-theme="dark"],
   --set-glass-control-hover: var(--mp-glass-control-hover);
   --set-glass-border: var(--mp-glass-border);
   --set-glass-divider: var(--mp-glass-divider);
+}
+
+/* Mobile & Touch GPU Optimization: 60/120fps Liquid Glass Without Blur Lag */
+@media (max-width: 960px), (hover: none) and (pointer: coarse) {
+  :root,
+  html[data-theme="light"],
+  .home-root.theme-light,
+  [data-home-theme="light"] {
+    --mp-glass-blur: none;
+    --mp-glass-control-blur: none;
+    --mp-glass-sticky-blur: blur(10px) saturate(1.65);
+    --mp-glass-modal-blur: blur(12px) saturate(1.45);
+    --mp-glass-bg: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.36) 0%,
+      rgba(255, 255, 255, 0.14) 55%,
+      rgba(255, 255, 255, 0.24) 100%
+    );
+    --mp-glass-bg-hover: rgba(255, 255, 255, 0.30);
+    --mp-glass-bg-elevated: rgba(255, 255, 255, 0.84);
+    --mp-glass-control: rgba(255, 255, 255, 0.32);
+    --mp-glass-border: rgba(15, 23, 42, 0.10);
+    --mp-glass-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.78),
+      0 8px 20px rgba(15, 23, 42, 0.06);
+    --mp-glass-control-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      0 3px 10px rgba(15, 23, 42, 0.05);
+  }
+
+  html[data-theme="dark"],
+  .home-root.theme-dark,
+  [data-home-theme="dark"] {
+    --mp-glass-blur: none;
+    --mp-glass-control-blur: none;
+    --mp-glass-sticky-blur: blur(9px) saturate(1.6);
+    --mp-glass-modal-blur: blur(12px) saturate(1.45);
+    --mp-glass-bg: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075) 0%,
+      rgba(12, 16, 24, 0.24) 55%,
+      rgba(255, 255, 255, 0.035) 100%
+    );
+    --mp-glass-bg-hover: rgba(255, 255, 255, 0.08);
+    --mp-glass-bg-elevated: rgba(16, 22, 31, 0.84);
+    --mp-glass-control: rgba(255, 255, 255, 0.065);
+    --mp-glass-border: rgba(255, 255, 255, 0.14);
+    --mp-glass-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 8px 22px rgba(0, 0, 0, 0.26);
+    --mp-glass-control-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 3px 10px rgba(0, 0, 0, 0.20);
+  }
 }
