@@ -1,0 +1,161 @@
+/* ============================================================================
+   MenuPlus — Centralized Theme Tokens (Single Source of Truth)
+   عدّل الألوان، الشفافية، اللمعان، الإطارات، وأحجام الخطوط من هذا الملف فقط.
+   ============================================================================ */
+
+:root {
+  /* Brand & Accent Colors */
+  --c1: #0F766E;
+  --c2: #FFFFFF;
+  --c3: #059669;
+  --c4: #F1F5F9;
+  --c5: #0F766E;
+  --brand: var(--c1);
+  --brand-ink: #0F766E;
+  --on-brand: #FFFFFF;
+  --accent: var(--c3);
+  --on-accent: #FFFFFF;
+  --soft: rgba(15, 118, 110, 0.10);
+  --ok: #059669;
+  --bad: #DC2626;
+  --warn: #D97706;
+
+  /* Global Shell & Text Colors (Light Default) */
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --panel: #F8FAFC;
+  --ink: #0F172A;
+  --muted: #475569;
+  --line: #CBD5E1;
+  --sel: #EEF2F6;
+
+  /* Typography & Radii Scale */
+  --mp-radius-card: 18px;
+  --mp-radius-panel: 20px;
+  --mp-radius-control: 12px;
+  --mp-radius-modal: 22px;
+  --mp-text-hero: clamp(21px, 3.2vw, 26px);
+  --mp-text-title: 18.5px;
+  --mp-text-row: 15.5px;
+  --mp-text-control: 14.5px;
+  --mp-text-meta: 13.5px;
+
+  /* Luminous Glossy Crystal Glass (Light Mode) */
+  --mp-glass-blur: blur(9px) saturate(1.55);
+  --mp-glass-control-blur: blur(8px) saturate(1.45);
+  --mp-glass-modal-blur: blur(22px) saturate(1.55);
+  --mp-glass-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.22) 34%, rgba(255, 255, 255, 0.08) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.24) 52%, rgba(255, 255, 255, 0.44) 100%);
+  --mp-glass-bg-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.34) 36%, rgba(255, 255, 255, 0.16) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.36) 52%, rgba(255, 255, 255, 0.56) 100%);
+  --mp-glass-bg-elevated:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.76) 100%);
+  --mp-glass-control:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.42) 100%);
+  --mp-glass-control-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.62) 100%);
+  --mp-glass-border: rgba(15, 23, 42, 0.12);
+  --mp-glass-border-strong: rgba(15, 23, 42, 0.20);
+  --mp-glass-divider: rgba(15, 23, 42, 0.08);
+  --mp-glass-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.05),
+    0 10px 28px rgba(15, 23, 42, 0.07);
+  --mp-glass-shadow-hover:
+    inset 0 1.5px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.07),
+    0 14px 34px rgba(15, 23, 42, 0.10);
+  --mp-glass-control-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+html[data-theme="light"] {
+  --brand-ink: #0F766E;
+  --ink: #0F172A;
+  --muted: #475569;
+  --line: #CBD5E1;
+  --surface: #FFFFFF;
+  --panel: #F8FAFC;
+  --soft: rgba(15, 118, 110, 0.10);
+
+  --mp-glass-blur: blur(9px) saturate(1.55);
+  --mp-glass-control-blur: blur(8px) saturate(1.45);
+  --mp-glass-modal-blur: blur(22px) saturate(1.55);
+  --mp-glass-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.22) 34%, rgba(255, 255, 255, 0.08) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.24) 52%, rgba(255, 255, 255, 0.44) 100%);
+  --mp-glass-bg-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.34) 36%, rgba(255, 255, 255, 0.16) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.36) 52%, rgba(255, 255, 255, 0.56) 100%);
+  --mp-glass-bg-elevated:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.76) 100%);
+  --mp-glass-control:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.42) 100%);
+  --mp-glass-control-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.62) 100%);
+  --mp-glass-border: rgba(15, 23, 42, 0.12);
+  --mp-glass-border-strong: rgba(15, 23, 42, 0.20);
+  --mp-glass-divider: rgba(15, 23, 42, 0.08);
+  --mp-glass-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.05),
+    0 10px 28px rgba(15, 23, 42, 0.07);
+  --mp-glass-shadow-hover:
+    inset 0 1.5px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.07),
+    0 14px 34px rgba(15, 23, 42, 0.10);
+  --mp-glass-control-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+html[data-theme="dark"] {
+  --brand-ink: #34D399;
+  --ink: #F8FAFC;
+  --muted: #94A3B8;
+  --line: rgba(255, 255, 255, 0.18);
+  --surface: #161B22;
+  --panel: #1C222B;
+  --bg: #0F1419;
+  --sel: rgba(255, 255, 255, 0.09);
+  --soft: rgba(15, 118, 110, 0.18);
+
+  /* Clear Shiny Crystal Glass (Dark Mode — transparent center + glossy top catchlight) */
+  --mp-glass-blur: blur(7px) saturate(1.55);
+  --mp-glass-control-blur: blur(6px) saturate(1.45);
+  --mp-glass-modal-blur: blur(22px) saturate(1.55);
+  --mp-glass-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 34%, rgba(255, 255, 255, 0.01) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(255, 255, 255, 0.075) 100%);
+  --mp-glass-bg-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.06) 36%, rgba(255, 255, 255, 0.025) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.11) 100%);
+  --mp-glass-bg-elevated:
+    linear-gradient(180deg, rgba(34, 43, 58, 0.78) 0%, rgba(19, 25, 34, 0.72) 100%);
+  --mp-glass-control:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 55%, rgba(255, 255, 255, 0.07) 100%);
+  --mp-glass-control-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.12) 100%);
+  --mp-glass-border: rgba(255, 255, 255, 0.23);
+  --mp-glass-border-strong: rgba(255, 255, 255, 0.36);
+  --mp-glass-divider: rgba(255, 255, 255, 0.10);
+  --mp-glass-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.07),
+    inset 1px 0 0 rgba(255, 255, 255, 0.14),
+    0 10px 30px rgba(0, 0, 0, 0.26);
+  --mp-glass-shadow-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.10),
+    inset 1px 0 0 rgba(255, 255, 255, 0.22),
+    0 14px 36px rgba(0, 0, 0, 0.34);
+  --mp-glass-control-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.18);
+  --set-glass-panel: var(--mp-glass-bg);
+  --set-glass-border: var(--mp-glass-border);
+}

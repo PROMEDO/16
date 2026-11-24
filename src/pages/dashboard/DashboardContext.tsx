@@ -303,8 +303,8 @@ export const STORE_NAV_TABS = [
 
 export const surfaceCardStyle: React.CSSProperties = {
   background: 'var(--mp-glass-bg)',
-  backdropFilter: 'blur(20px) saturate(1.35)',
-  WebkitBackdropFilter: 'blur(20px) saturate(1.35)',
+  backdropFilter: 'var(--mp-glass-blur)',
+  WebkitBackdropFilter: 'var(--mp-glass-blur)',
   border: '1px solid var(--mp-glass-border)',
   boxShadow: 'var(--mp-glass-shadow)',
   color: 'var(--ink)',
@@ -313,8 +313,8 @@ export const surfaceCardStyle: React.CSSProperties = {
 export const themedInputStyle: React.CSSProperties = {
   color: 'var(--ink)',
   background: 'var(--mp-glass-control)',
-  backdropFilter: 'blur(14px) saturate(1.25)',
-  WebkitBackdropFilter: 'blur(14px) saturate(1.25)',
+  backdropFilter: 'var(--mp-glass-control-blur)',
+  WebkitBackdropFilter: 'var(--mp-glass-control-blur)',
   border: '1px solid var(--mp-glass-border)',
   borderRadius: '12px',
   padding: '10px 14px',
@@ -324,7 +324,7 @@ export const themedInputStyle: React.CSSProperties = {
 export const modalSectionStyle: React.CSSProperties = {
   background: 'transparent',
   border: 0,
-  borderBottom: '1px solid var(--line)',
+  borderBottom: '1px solid var(--mp-glass-divider)',
   borderRadius: 0,
   padding: '0 0 14px',
   marginBottom: '14px',

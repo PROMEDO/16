@@ -1,6 +1,8 @@
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import './styles/theme-tokens.css';
+import './styles/site-theme.css';
 
 const IN_APP_BROWSER_RE =
   /\b(Instagram|FBAN|FBAV|FB_IAB|Threads|TikTok|BytedanceWebview|musical_ly|Snapchat|Line|MicroMessenger)\b/i;
