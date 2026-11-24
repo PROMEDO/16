@@ -18,7 +18,56 @@ html[data-theme] .home-root::before,
   background-image:
     linear-gradient(to right, var(--mp-grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--mp-grid-line) 1px, transparent 1px) !important;
-  background-size: var(--mp-grid-size, 64px) var(--mp-grid-size, 64px) !important;
+  background-size: var(--mp-grid-size, 32px) var(--mp-grid-size, 32px) !important;
+}
+
+/* Home-style Emerald Green Gradient Across All Dashboards When Grid Backdrop Is Selected */
+html[data-theme="light"]:not([data-shell-backdrop="liquid-image"]) .shell::before {
+  background-color: #f6faf8;
+  background-image:
+    linear-gradient(to right, var(--mp-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mp-grid-line) 1px, transparent 1px),
+    radial-gradient(ellipse 110% 55% at 50% -4%, rgba(16, 185, 129, 0.16) 0%, rgba(27, 94, 74, 0.06) 45%, transparent 78%),
+    linear-gradient(180deg, #f8fcfa 0%, #f1f7f4 60%, #f6faf8 100%) !important;
+  background-size:
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    100% 100%,
+    100% 100% !important;
+  background-repeat: repeat, repeat, no-repeat, no-repeat !important;
+}
+
+html[data-theme="dark"]:not([data-shell-backdrop="liquid-image"]) .shell::before {
+  background-color: #0F1419;
+  background-image:
+    linear-gradient(to right, var(--mp-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mp-grid-line) 1px, transparent 1px),
+    radial-gradient(ellipse 110% 55% at 50% -4%, rgba(16, 185, 129, 0.14) 0%, rgba(15, 118, 110, 0.05) 45%, transparent 78%),
+    linear-gradient(180deg, #0F1419 0%, #11181F 60%, #0F1419 100%) !important;
+  background-size:
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    100% 100%,
+    100% 100% !important;
+  background-repeat: repeat, repeat, no-repeat, no-repeat !important;
+}
+
+html[data-theme="light"][data-shell-backdrop="liquid-image"] .shell::before {
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.40) 0%, rgba(248, 250, 252, 0.34) 100%),
+    url("/assets/aistudio/125b2ca9092c1fc178c556138a837115_7e71c0d4.jpg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"][data-shell-backdrop="liquid-image"] .shell::before {
+  background-image:
+    linear-gradient(180deg, rgba(10, 14, 22, 0.44) 0%, rgba(10, 14, 22, 0.52) 100%),
+    url("/assets/aistudio/125b2ca9092c1fc178c556138a837115_7e71c0d4.jpg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
 }
 
 /* --------------------------------------------------------------------------

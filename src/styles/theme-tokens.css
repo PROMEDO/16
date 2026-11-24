@@ -45,7 +45,7 @@ html[data-theme="light"],
   --mp-text-meta: 13.5px;
 
   /* Fixed Grid Backdrop Tokens (Light Mode) */
-  --mp-grid-size: 64px;
+  --mp-grid-size: 32px;
   --mp-grid-line: rgba(15, 23, 42, 0.095);
 
   /* Apple Liquid Glass Tokens (Light Mode — Crisp Optical Clarity) */
@@ -222,5 +222,52 @@ html[data-theme="dark"],
     --mp-glass-control-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.12),
       0 3px 10px rgba(0, 0, 0, 0.20);
+  }
+}
+
+/* Balanced Crystal Readability When Liquid Image Backdrop Is Active */
+html[data-theme="light"][data-shell-backdrop="liquid-image"] {
+  --mp-glass-blur: blur(10px) saturate(1.8) brightness(1.04);
+  --mp-glass-sticky-blur: blur(14px) saturate(1.85) brightness(1.04);
+  --mp-glass-bg: rgba(255, 255, 255, 0.42);
+  --mp-glass-bg-hover: rgba(255, 255, 255, 0.56);
+  --mp-glass-bg-elevated: rgba(255, 255, 255, 0.72);
+  --mp-glass-control: rgba(255, 255, 255, 0.48);
+  --mp-glass-control-hover: rgba(255, 255, 255, 0.64);
+  --muted: #334155;
+}
+
+html[data-theme="dark"][data-shell-backdrop="liquid-image"] {
+  --mp-glass-blur: blur(10px) saturate(1.75);
+  --mp-glass-sticky-blur: blur(14px) saturate(1.8);
+  --mp-glass-bg: rgba(12, 16, 24, 0.34);
+  --mp-glass-bg-hover: rgba(18, 24, 34, 0.44);
+  --mp-glass-bg-elevated: rgba(14, 19, 27, 0.72);
+  --mp-glass-control: rgba(12, 16, 24, 0.40);
+  --mp-glass-control-hover: rgba(255, 255, 255, 0.12);
+  --muted: #CBD5E1;
+}
+
+@media (max-width: 960px), (hover: none) and (pointer: coarse) {
+  html[data-theme="light"][data-shell-backdrop="liquid-image"] {
+    --mp-glass-blur: none;
+    --mp-glass-bg: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.62) 0%,
+      rgba(255, 255, 255, 0.44) 55%,
+      rgba(255, 255, 255, 0.54) 100%
+    );
+    --mp-glass-control: rgba(255, 255, 255, 0.54);
+  }
+
+  html[data-theme="dark"][data-shell-backdrop="liquid-image"] {
+    --mp-glass-blur: none;
+    --mp-glass-bg: linear-gradient(
+      135deg,
+      rgba(22, 28, 40, 0.54) 0%,
+      rgba(12, 16, 24, 0.46) 55%,
+      rgba(22, 28, 40, 0.50) 100%
+    );
+    --mp-glass-control: rgba(16, 22, 32, 0.52);
   }
 }

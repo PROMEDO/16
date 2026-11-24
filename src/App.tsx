@@ -646,6 +646,8 @@ export default function App() {
     site.homeThemeMode,
     site.adminThemeMode,
     site.dashboardThemeMode,
+    site.adminBackdrop,
+    site.dashboardBackdrop,
     site.motionConfig,
     session?.rid,
     activeDashboardThemeMode,

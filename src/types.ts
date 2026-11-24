@@ -234,6 +234,8 @@ export interface SiteSettings {
   homeThemeMode?: 'dark' | 'light' | 'auto';
   adminThemeMode?: 'dark' | 'light' | 'auto';
   dashboardThemeMode?: 'dark' | 'light' | 'auto';
+  adminBackdrop?: 'grid' | 'liquid-image';
+  dashboardBackdrop?: 'grid' | 'liquid-image';
   adminTabLabels?: Record<string, string>;
   dashboardTabLabels?: Record<string, string>;
   adminTabOrder?: string[];

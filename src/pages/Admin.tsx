@@ -62,6 +62,7 @@ import {
 import {
   DEFAULT_TYPOGRAPHY,
   PLATFORM_FONT_CATALOG,
+  applyShellBackdrop,
   applyTheme,
   buildThemeForMode,
   flushPendingDbSync,
@@ -366,6 +367,8 @@ export const AdminView: React.FC<AdminViewProps> = ({
         editSite.dashboardThemeMode === 'dark' || editSite.dashboardThemeMode === 'auto'
           ? editSite.dashboardThemeMode
           : 'light',
+      adminBackdrop: editSite.adminBackdrop === 'liquid-image' ? 'liquid-image' : 'grid',
+      dashboardBackdrop: editSite.dashboardBackdrop === 'liquid-image' ? 'liquid-image' : 'grid',
       adminTabLabels: cleanedAdminLabels,
       dashboardTabLabels: cleanedDashLabels,
       adminTabOrder: Array.isArray(editSite.adminTabOrder) ? editSite.adminTabOrder : site.adminTabOrder,
@@ -605,6 +608,55 @@ export const AdminView: React.FC<AdminViewProps> = ({
       `ثيم لوحة التحكم الافتراضي: ${nextMode === 'auto' ? 'حسب جهاز الزبون' : nextMode === 'dark' ? 'داكن' : 'فاتح'}`,
       'system'
     );
+    onRefresh();
+    showToast('تم حفظ التغيرات');
+  };
+
+  const handleSelectAdminBackdrop = async (nextBackdrop: 'grid' | 'liquid-image') => {
+    if (!isSuperAdmin && !staffPerms.canManageThemeMode && !staffPerms.canManageSettings) {
+      showToast('ليست لديك صلاحية تغيير المظهر');
+      return;
+    }
+    if (siteAutoSaveTimerRef.current !== null) {
+      window.clearTimeout(siteAutoSaveTimerRef.current);
+      siteAutoSaveTimerRef.current = null;
+    }
+    const nextSite: SiteSettings = {
+      ...site,
+      ...editSite,
+      adminBackdrop: nextBackdrop,
+      ...(editSite.dashboardBackdrop === 'liquid-image' && nextBackdrop === 'grid'
+        ? { dashboardBackdrop: 'grid' }
+        : {}),
+    };
+    hydratedSiteSigRef.current = JSON.stringify(nextSite);
+    setEditSite(nextSite);
+    applyShellBackdrop(nextBackdrop);
+    await putItemAndSync('settings/site', nextSite);
+    onRefresh();
+    showToast('تم حفظ التغيرات');
+  };
+
+  const handleToggleDashboardBackdrop = async (applyToCustomers: boolean) => {
+    if (!isSuperAdmin && !staffPerms.canManageThemeMode && !staffPerms.canManageSettings) {
+      showToast('ليست لديك صلاحية تغيير المظهر');
+      return;
+    }
+    if (siteAutoSaveTimerRef.current !== null) {
+      window.clearTimeout(siteAutoSaveTimerRef.current);
+      siteAutoSaveTimerRef.current = null;
+    }
+    const nextDashBackdrop: 'grid' | 'liquid-image' = applyToCustomers
+      ? (editSite.adminBackdrop === 'liquid-image' ? 'liquid-image' : 'grid')
+      : 'grid';
+    const nextSite: SiteSettings = {
+      ...site,
+      ...editSite,
+      dashboardBackdrop: nextDashBackdrop,
+    };
+    hydratedSiteSigRef.current = JSON.stringify(nextSite);
+    setEditSite(nextSite);
+    await putItemAndSync('settings/site', nextSite);
     onRefresh();
     showToast('تم حفظ التغيرات');
   };
@@ -1825,6 +1877,130 @@ export const AdminView: React.FC<AdminViewProps> = ({
                           >
                             <Monitor size={14} />
                             <span>حسب الجهاز</span>
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })()}
+
+                  <div style={{ height: '1px', background: 'var(--line)' }} />
+
+                  {/* 3. Dashboard Background Style Switcher (Grid vs Liquid Glass Photo) */}
+                  {(() => {
+                    const activeBackdrop: 'grid' | 'liquid-image' =
+                      editSite.adminBackdrop === 'liquid-image' ? 'liquid-image' : 'grid';
+                    const applyToDash = editSite.dashboardBackdrop === 'liquid-image';
+                    return (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            gap: '10px 16px',
+                          }}
+                        >
+                          <div style={{ fontSize: '15px', fontWeight: 900, color: 'var(--ink)' }}>
+                            خلفية لوحة التحكم
+                          </div>
+
+                          {activeBackdrop === 'liquid-image' && (
+                            <label
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                cursor: allowThemePay ? 'pointer' : 'not-allowed',
+                                fontSize: '13.5px',
+                                fontWeight: 700,
+                                color: 'var(--ink)',
+                              }}
+                            >
+                              <span>تطبيق أيضاً على لوحة الزبائن</span>
+                              <button
+                                type="button"
+                                role="switch"
+                                aria-checked={applyToDash}
+                                disabled={!allowThemePay}
+                                className={`ios-switch sm ${applyToDash ? 'on' : 'off'}`}
+                                onClick={() => void handleToggleDashboardBackdrop(!applyToDash)}
+                              >
+                                <span className="ios-switch-thumb" />
+                              </button>
+                            </label>
+                          )}
+                        </div>
+
+                        <div
+                          style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
+                            gap: '12px',
+                          }}
+                        >
+                          <button
+                            type="button"
+                            disabled={!allowThemePay}
+                            onClick={() => void handleSelectAdminBackdrop('grid')}
+                            className={`mp-appearance-theme-card${activeBackdrop === 'grid' ? ' selected' : ''}`}
+                            style={{
+                              padding: '10px',
+                              borderRadius: '16px',
+                              textAlign: 'center',
+                              cursor: allowThemePay ? 'pointer' : 'not-allowed',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '8px',
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: '100%',
+                                height: '82px',
+                                borderRadius: '12px',
+                                border: '1px solid var(--mp-glass-border)',
+                                backgroundColor: 'var(--bg)',
+                                backgroundImage:
+                                  'linear-gradient(to right, var(--mp-grid-line, rgba(148,163,184,0.2)) 1px, transparent 1px), linear-gradient(to bottom, var(--mp-grid-line, rgba(148,163,184,0.2)) 1px, transparent 1px), radial-gradient(ellipse 120% 70% at 50% 0%, rgba(16, 185, 129, 0.20) 0%, transparent 78%)',
+                                backgroundSize: '12px 12px, 12px 12px, 100% 100%',
+                              }}
+                            />
+                            <span style={{ fontSize: '14.5px', fontWeight: 800, color: 'var(--ink)' }}>
+                              خلفية المربعات
+                            </span>
+                          </button>
+
+                          <button
+                            type="button"
+                            disabled={!allowThemePay}
+                            onClick={() => void handleSelectAdminBackdrop('liquid-image')}
+                            className={`mp-appearance-theme-card${activeBackdrop === 'liquid-image' ? ' selected' : ''}`}
+                            style={{
+                              padding: '10px',
+                              borderRadius: '16px',
+                              textAlign: 'center',
+                              cursor: allowThemePay ? 'pointer' : 'not-allowed',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '8px',
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: '100%',
+                                height: '82px',
+                                borderRadius: '12px',
+                                border: '1px solid var(--mp-glass-border)',
+                                backgroundImage:
+                                  'url("/assets/aistudio/125b2ca9092c1fc178c556138a837115_7e71c0d4.jpg")',
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                              }}
+                            />
+                            <span style={{ fontSize: '14.5px', fontWeight: 800, color: 'var(--ink)' }}>
+                              خلفية الزجاج السائل
+                            </span>
                           </button>
                         </div>
                       </div>

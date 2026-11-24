@@ -879,6 +879,8 @@ export const DEFAULT_SITE: SiteSettings = {
   defaultCurrency: 'د.ع',
   homeThemeMode: 'light',
   adminThemeMode: 'light',
+  adminBackdrop: 'grid',
+  dashboardBackdrop: 'grid',
   motionConfig: { ...DEFAULT_MOTION_CONFIG },
 };
 
@@ -1104,6 +1106,14 @@ export function buildThemeForMode(mode: 'light' | 'dark' | 'auto', base?: ThemeS
   };
 }
 
+export function applyShellBackdrop(style: 'grid' | 'liquid-image') {
+  if (typeof document === 'undefined') return;
+  document.documentElement.setAttribute(
+    'data-shell-backdrop',
+    style === 'liquid-image' ? 'liquid-image' : 'grid'
+  );
+}
+
 export function applyScopedTheme(pathname?: string) {
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
   const path = (pathname ?? window.location.pathname ?? '/').toLowerCase();
@@ -1112,30 +1122,32 @@ export function applyScopedTheme(pathname?: string) {
   const parsedRoute = parsePathRoute(path);
   // Do not override public storefront / QR menu colors, but ALWAYS apply platform typography/fonts
   if (parsedRoute.page === 'menu' || Boolean((window as any).__MENUPLUS_SUBDOMAIN__)) {
+    document.documentElement.removeAttribute('data-shell-backdrop');
     applyPlatformTypography(getTheme());
     return;
   }
 
   let mode: 'light' | 'dark' = 'light';
+  const curSite = getSite();
   if (path.startsWith('/admin')) {
-    const curSite = getSite();
     mode = resolveEffectiveThemeMode(curSite.adminThemeMode || 'light');
+    applyShellBackdrop(curSite.adminBackdrop === 'liquid-image' ? 'liquid-image' : 'grid');
   } else if (isDashboardPath(path)) {
     const curSes = getSession();
     const curRest = curSes?.rid ? getItem<Restaurant>(`restaurants/${curSes.rid}`) : null;
-    const curSite = getSite();
     const storePref = curRest?.dashboardThemeMode;
     const effectivePref =
       storePref === 'light' || storePref === 'dark' || storePref === 'auto'
         ? storePref
         : curSite.dashboardThemeMode || 'light';
     mode = resolveEffectiveThemeMode(effectivePref);
+    applyShellBackdrop(curSite.dashboardBackdrop === 'liquid-image' ? 'liquid-image' : 'grid');
   } else {
     // Public site pages (/ , /login, /signup, /forgot, /onboard) use homeThemeMode only
-    const curSite = getSite();
     mode = resolveEffectiveThemeMode(curSite.homeThemeMode || 'light');
+    applyShellBackdrop('grid');
   }
-  syncDashboardMotionFromSite(getSite(), path);
+  syncDashboardMotionFromSite(curSite, path);
   void host;
   applyTheme(buildThemeForMode(mode, getTheme()), { silent: true });
 }
