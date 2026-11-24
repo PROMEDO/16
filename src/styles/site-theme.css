@@ -1,10 +1,10 @@
 /* ============================================================================
-   MenuPlus — Universal Smoked Liquid Glass Theme (All Pages & Dashboards)
-   ملف تنسيق موحّد لجميع لوحات التحكم والصفحات بالوضعين الداكن والفاتح.
+   MenuPlus — Universal Apple Liquid Glass Theme (All Pages & Dashboards)
+   ملف تنسيق موحّد بإطار لمعان متدرج (135deg Specular Rim) وعدسة زجاجية شفافة.
    ============================================================================ */
 
 /* --------------------------------------------------------------------------
-   1. Smoked Liquid Glass Cards, Panels & Sections (Dashboards + Platform Pages)
+   1. Crystal Liquid Glass Panels & Cards (Dashboards + Platform Pages)
    -------------------------------------------------------------------------- */
 .shell .card,
 .shell .kp,
@@ -30,22 +30,73 @@
 .home-root .card,
 .home-root .feature-compact-card,
 .home-root .mp-auth-glass-card,
-.home-root .mp-unified-card,
+.mp-unified-card,
 .home-root .mp-pricing-card-anim:not(.is-featured) {
+  position: relative;
   background: var(--mp-glass-bg) !important;
-  background-size: 160% 160% !important;
-  background-position: 0% 0% !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
-  border: 1px solid var(--mp-glass-border) !important;
+  border: 0 !important;
   box-shadow: var(--mp-glass-shadow) !important;
   color: var(--ink);
   transition:
-    background-position 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.28s ease,
-    border-color 0.24s ease,
-    box-shadow 0.28s ease,
+    background 0.24s ease,
+    box-shadow 0.24s ease,
     transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Preserve brand border highlight when dragging item/category rows */
+.shell .mp-item-card[style*="var(--brand)"] {
+  border: 1.5px solid var(--brand) !important;
+  box-shadow:
+    inset 0 1.5px 6px rgba(255, 255, 255, 0.22),
+    0 18px 42px color-mix(in srgb, var(--brand) 28%, rgba(0, 0, 0, 0.35)) !important;
+}
+
+/* Directional 1px Curved Glass Specular Edge Ring */
+.shell .card::before,
+.shell .kp::before,
+.shell .mp-item-card:not([style*="var(--brand)"])::before,
+.shell .mp-set-card::before,
+.shell .mp-set2-panel::before,
+.shell .mp-set2-hero:not(.is-paused)::before,
+.shell .mp-set2-tabs-bar::before,
+.shell .mp-home-shortcut-card:not(.is-active-warn)::before,
+.shell .mp-home-tips-box::before,
+.shell .mp-stats-kpi-tile::before,
+.shell .mp-stats-panel::before,
+.shell .mp-addon-square-card:not(.is-enabled)::before,
+.shell .mp-orders-tabs::before,
+.shell .mp-order-row::before,
+.shell .mp-db-maintenance-bar::before,
+.shell .mp-pwa-banner::before,
+.shell .mp-compass-search-bar::before,
+.shell .mp-tab-order-tile:not(.is-dragging)::before,
+.shell .mp-appearance-layout-card:not(.selected)::before,
+.shell .mp-appearance-theme-card:not(.selected)::before,
+.shell .mp-appearance-shape-card:not(.selected)::before,
+.home-root .card::before,
+.home-root .feature-compact-card::before,
+.home-root .mp-auth-glass-card::before,
+.mp-unified-card::before,
+.home-root .mp-pricing-card-anim:not(.is-featured)::before,
+.ajax-box::before,
+.mp-od-sheet::before,
+.mp-select-modal-box::before,
+.mp-status-picker-card::before,
+.profile-popover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--mp-glass-rim);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .shell .mp-set2-panel,
@@ -53,7 +104,7 @@
 .shell .mp-set2-hero,
 .shell .mp-home-tips-box,
 .home-root .mp-auth-glass-card,
-.home-root .mp-unified-card {
+.mp-unified-card {
   border-radius: var(--mp-radius-panel) !important;
 }
 
@@ -64,8 +115,6 @@
 .shell .kp:hover,
 .home-root .feature-compact-card:hover {
   background: var(--mp-glass-bg-hover) !important;
-  background-position: 100% 100% !important;
-  border-color: var(--mp-glass-border-strong) !important;
   box-shadow: var(--mp-glass-shadow-hover) !important;
   transform: translateY(-1px);
 }
@@ -87,27 +136,28 @@
 .shell .mp-appearance-layout-card.selected,
 .shell .mp-appearance-theme-card.selected,
 .shell .mp-appearance-shape-card.selected {
+  position: relative;
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--brand) 16%, transparent) 0%, color-mix(in srgb, var(--brand) 5%, transparent) 100%) !important;
   backdrop-filter: var(--mp-glass-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-blur) !important;
-  border: 1px solid color-mix(in srgb, var(--brand) 52%, var(--mp-glass-border)) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 58%, rgba(255, 255, 255, 0.22)) !important;
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.24),
-    inset 0 -1px 0 0 rgba(0, 0, 0, 0.20),
-    0 12px 28px color-mix(in srgb, var(--brand) 16%, transparent) !important;
+    inset 0 1.5px 6px rgba(255, 255, 255, 0.20),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.20),
+    0 12px 28px color-mix(in srgb, var(--brand) 18%, transparent) !important;
 }
 
-/* Admin framed sections stay clean inside glass */
 .shell .mp-framed-box {
   border-bottom-color: var(--mp-glass-divider) !important;
 }
 
 /* --------------------------------------------------------------------------
-   2. Silky Pill Controls, Inputs, Icon Keys & Glossy Switches
+   2. Pill Glass Buttons, Controls, Inputs & Glossy Switches
    -------------------------------------------------------------------------- */
 .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn),
 .home-root .btn:not(.p):not(.d),
+.mp-unified-card .btn:not(.p):not(.d),
 .shell .mp-jump-btn,
 .shell .mp-item-icon-btn:not(.is-scheduled),
 .shell .mp-order-icon-btn:not(.is-wa),
@@ -126,21 +176,60 @@
 .shell .mp-set2-channel-card:not(.is-selected),
 .shell .mp-set2-type-card:not(.is-selected),
 .shell .mp-set2-seg-2-btn:not(.active) {
+  position: relative;
   background: var(--mp-glass-control) !important;
   backdrop-filter: var(--mp-glass-control-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
-  border: 1px solid var(--mp-glass-border) !important;
+  border: 0 !important;
   box-shadow: var(--mp-glass-control-shadow) !important;
   color: var(--ink) !important;
   transition:
     background 0.18s ease,
-    border-color 0.18s ease,
     box-shadow 0.18s ease,
     transform 0.14s ease;
 }
 
+.shell .btn:not(.p):not(.d):not(.mp-home-tip-btn)::before,
+.home-root .btn:not(.p):not(.d)::before,
+.mp-unified-card .btn:not(.p):not(.d)::before,
+.shell .mp-jump-btn::before,
+.shell .mp-item-icon-btn:not(.is-scheduled)::before,
+.shell .mp-order-icon-btn:not(.is-wa)::before,
+.shell .mp-order-link-pill::before,
+.shell .mp-order-modal-status-btn::before,
+.shell .mp-items-count-box:not(.is-limit)::before,
+.shell .mp-items-cats-arrow::before,
+.shell .mp-items-cat-tab:not(.is-active)::before,
+.shell .mp-compass-btn:not(.is-active)::before,
+.shell .mp-seg-group::before,
+.shell .mp-tbl-btn:not(.is-danger)::before,
+.shell .mp-tab-order-btn::before,
+.shell .mp-action-tile::before,
+.shell .mp-custom-color-chip::before,
+.shell .mp-item-price-btn::before,
+.shell .mp-set2-channel-card:not(.is-selected)::before,
+.shell .mp-set2-type-card:not(.is-selected)::before,
+.shell .mp-set2-seg-2-btn:not(.active)::before,
+.shell .btn.p:not(.d)::before,
+.home-root .btn.p:not(.d)::before,
+.mp-unified-card .btn.p:not(.d)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--mp-glass-rim-control);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
 .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn):hover:not(:disabled),
 .home-root .btn:not(.p):not(.d):hover:not(:disabled),
+.mp-unified-card .btn:not(.p):not(.d):hover:not(:disabled),
 .shell .mp-jump-btn:hover,
 .shell .mp-item-icon-btn:not(.is-scheduled):hover,
 .shell .mp-order-icon-btn:not(.is-wa):hover,
@@ -155,11 +244,11 @@
 .shell .mp-set2-type-card:not(.is-selected):hover,
 .shell .mp-set2-seg-2-btn:not(.active):hover {
   background: var(--mp-glass-control-hover) !important;
-  border-color: var(--mp-glass-border-strong) !important;
 }
 
 .shell .btn:not(.mp-home-tip-btn),
 .home-root .btn,
+.mp-unified-card .btn,
 .shell .mp-jump-btn,
 .shell .mp-order-link-pill,
 .shell .mp-items-cat-tab,
@@ -169,12 +258,13 @@
 
 .shell .mp-set2-channel-card.is-selected,
 .shell .mp-set2-type-card.is-selected {
+  position: relative;
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--brand) 16%, transparent) 0%, color-mix(in srgb, var(--brand) 5%, transparent) 100%) !important;
-  border: 1px solid color-mix(in srgb, var(--brand) 55%, rgba(255, 255, 255, 0.16)) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 58%, rgba(255, 255, 255, 0.22)) !important;
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.24),
-    inset 0 -1px 0 0 rgba(0, 0, 0, 0.20),
+    inset 0 1.5px 5px rgba(255, 255, 255, 0.22),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.20),
     0 8px 22px color-mix(in srgb, var(--brand) 16%, transparent) !important;
 }
 
@@ -184,31 +274,37 @@
   border-radius: 12px;
 }
 
-/* Liquid Glass Primary CTA Buttons & Active Pills */
+/* Liquid Glass Primary CTA Buttons & Gel Pills */
 .shell .btn.p:not(.d),
 .home-root .btn.p:not(.d),
+.mp-unified-card .btn.p:not(.d),
 .shell .mp-set2-tab-pill,
 .shell .mp-set2-seg-2-btn.active,
 .shell .mp-seg-btn.is-active,
 .shell .mp-items-cat-tab.is-active {
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 95%, #ffffff 12%) 0%, color-mix(in srgb, var(--brand) 82%, #000000 18%) 100%) !important;
-  border: 1px solid color-mix(in srgb, var(--brand) 55%, rgba(255, 255, 255, 0.24)) !important;
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 88%, #ffffff 12%) 0%, color-mix(in srgb, var(--brand) 86%, #000000 14%) 100%) !important;
+  border: 0 !important;
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.34),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.26),
-    0 8px 22px color-mix(in srgb, var(--brand) 30%, transparent) !important;
+    inset 0 2px 5px rgba(255, 255, 255, 0.42),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.24),
+    0 8px 24px color-mix(in srgb, var(--brand) 30%, transparent) !important;
   color: var(--on-brand, #ffffff) !important;
+}
+
+.shell .btn.p:not(.d),
+.home-root .btn.p:not(.d),
+.mp-unified-card .btn.p:not(.d) {
+  position: relative;
 }
 
 /* Liquid Glass iOS Toggle Switches */
 .shell .ios-switch.on {
-  background:
-    linear-gradient(135deg, #34d399 0%, #059669 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.36),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.20),
+    inset 0 1.5px 4px rgba(255, 255, 255, 0.42),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.20),
     0 4px 14px rgba(16, 185, 129, 0.28);
 }
 
@@ -218,7 +314,7 @@
   box-shadow: var(--mp-glass-control-shadow);
 }
 
-/* Inputs & Textareas */
+/* Inputs & Textareas (Void elements keep clean border + lens depth) */
 .shell .inp,
 .shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input),
 .shell select,
@@ -227,7 +323,11 @@
 .home-root .inp,
 .home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
 .home-root select,
-.home-root textarea {
+.home-root textarea,
+.mp-unified-card .inp,
+.mp-unified-card input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
+.mp-unified-card select,
+.mp-unified-card textarea {
   background: var(--mp-glass-control) !important;
   backdrop-filter: var(--mp-glass-control-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
@@ -245,8 +345,12 @@
 .home-root .inp:focus,
 .home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
 .home-root select:focus,
-.home-root textarea:focus {
-  border-color: color-mix(in srgb, var(--brand) 65%, rgba(255, 255, 255, 0.22)) !important;
+.home-root textarea:focus,
+.mp-unified-card .inp:focus,
+.mp-unified-card input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
+.mp-unified-card select:focus,
+.mp-unified-card textarea:focus {
+  border-color: color-mix(in srgb, var(--brand) 65%, rgba(255, 255, 255, 0.26)) !important;
   box-shadow:
     var(--mp-glass-control-shadow),
     0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent) !important;
@@ -275,7 +379,7 @@
   border-bottom: 1px solid var(--mp-glass-border) !important;
   box-shadow:
     inset 0 -1px 0 0 var(--mp-glass-divider),
-    0 8px 26px rgba(0, 0, 0, 0.16) !important;
+    0 8px 26px rgba(0, 0, 0, 0.14) !important;
 }
 
 .shell .sb,
@@ -291,12 +395,19 @@
 .ajax-box,
 .mp-od-sheet,
 .mp-select-modal-box,
+.mp-status-picker-card {
+  position: relative;
+}
+
+.ajax-box,
+.mp-od-sheet,
+.mp-select-modal-box,
 .mp-status-picker-card,
 .profile-popover {
   background: var(--mp-glass-bg-elevated) !important;
   backdrop-filter: var(--mp-glass-modal-blur) !important;
   -webkit-backdrop-filter: var(--mp-glass-modal-blur) !important;
-  border: 1px solid var(--mp-glass-border) !important;
+  border: 0 !important;
   border-radius: var(--mp-radius-modal) !important;
   box-shadow: var(--mp-glass-shadow) !important;
   color: var(--ink) !important;
